@@ -149,7 +149,6 @@ public class SeparateJFrame extends javax.swing.JFrame {
                         model.setValueAt(theEmp.getEmpNum(), empCounter, 1);
                         model.setValueAt(theEmp.getFirstName(), empCounter, 2);
                         model.setValueAt(theEmp.getLastName(), empCounter, 3);
-
                     }
                     
                     if (theEmp instanceof PTE) {
@@ -162,7 +161,6 @@ public class SeparateJFrame extends javax.swing.JFrame {
                         model.setValueAt(theEmp.getEmpNum(), empCounter, 1);
                         model.setValueAt(theEmp.getFirstName(), empCounter, 2);
                         model.setValueAt(theEmp.getLastName(), empCounter, 3);
-
 
                    }
                 }
