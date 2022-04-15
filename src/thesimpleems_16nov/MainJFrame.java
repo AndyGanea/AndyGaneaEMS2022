@@ -49,11 +49,9 @@ public class MainJFrame extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -78,13 +76,6 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("WEATHER FOR A CITY");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clicked_jButton4(evt);
-            }
-        });
-
         jButton5.setText("Save all employees to file");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,17 +90,10 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setText("jButton7");
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setText("Display info for a single employee");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-
-        jButton8.setText("jButton8");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
 
@@ -118,26 +102,18 @@ public class MainJFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton5))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(203, Short.MAX_VALUE)
                 .addComponent(jButton6))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton1)
-                .addContainerGap(129, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton8))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton7)))
-                .addGap(19, 19, 19))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton4)
+                    .addComponent(jButton3))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,20 +122,13 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addComponent(jButton1)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton7))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jButton3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jButton8)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
+                .addComponent(jButton2)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addGap(18, 18, 18)
+                .addComponent(jButton4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
+                .addComponent(jButton5)
                 .addGap(36, 36, 36))
         );
 
@@ -192,9 +161,8 @@ public class MainJFrame extends javax.swing.JFrame {
         
         SeparateJFrame theSeparateJFrame = new SeparateJFrame();
         theSeparateJFrame.setVisible(true);
-        //MyHashTable refVal = getTheHT();
-        //MyHashTable refVal = theHT;
-        theSeparateJFrame.setMainHT(theHT);  // Have theSeparateJFrame mainHT point to the real HT.
+        MyHashTable refVal = getTheHT();
+        theSeparateJFrame.setMainHT(refVal);  // Have theSeparateJFrame mainHT point to the real HT.
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void pressed_jButton3(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pressed_jButton3
@@ -203,13 +171,6 @@ public class MainJFrame extends javax.swing.JFrame {
         theANEJFrame.setVisible(true);
         theANEJFrame.setMainHT(theHT);
     }//GEN-LAST:event_pressed_jButton3
-
-    private void clicked_jButton4(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clicked_jButton4
-        // TODO add your handling code here:
-        AnotherSeparateJFrame theAnotherSeparateJFrame = new AnotherSeparateJFrame();
-        theAnotherSeparateJFrame.setVisible(true);
-        //System.out.println(theAnotherSeparateJFrame);
-    }//GEN-LAST:event_clicked_jButton4
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -227,17 +188,13 @@ public class MainJFrame extends javax.swing.JFrame {
         // each of those employees to the hash table.
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        ABogusJFrame theBogusJFrame = new ABogusJFrame();
-        theBogusJFrame.setVisible(true);
-    }//GEN-LAST:event_jButton7ActionPerformed
-
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
-        MarchSeparateJFrame theMar31SepJFrame = new MarchSeparateJFrame();
-        theMar31SepJFrame.setVisible(true);
-    }//GEN-LAST:event_jButton8ActionPerformed
+        DisplayEmployeeJFrame theDisplayEmployeeJFrame = new DisplayEmployeeJFrame();
+        theDisplayEmployeeJFrame.setVisible(true);
+        MyHashTable refVal = getTheHT();
+        theDisplayEmployeeJFrame.setMainHT(refVal);
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     
     
@@ -284,7 +241,5 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
     // End of variables declaration//GEN-END:variables
 }

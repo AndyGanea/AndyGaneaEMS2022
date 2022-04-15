@@ -26,7 +26,7 @@ public class FTE extends EmployeeInfo {
      * @param eN
      * @param fN
      * @param lN
-     * @param s
+     * @param g
      * @param wL
      * @param dR
      * @param yS

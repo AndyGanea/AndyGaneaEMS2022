@@ -65,7 +65,7 @@ public class MyHashTable {
 	
 	
 	
-	public int searchByEmployeeNumber(int employeeNum) {
+	public EmployeeInfo searchByEmployeeNumber(int employeeNum) {
 
 		// Determine the position of the employee in the ArrayList for the bucket that that employee hashes to.
 		// If the employee is not found, return -1.
@@ -75,15 +75,37 @@ public class MyHashTable {
 		// Walk through the ArrayList and look for the employee.
 		for (int j = 0; j < buckets[targetBucket].size(); j++) {
 			if (employeeNum == buckets[targetBucket].get(j).getEmpNum()) {
-				return(j); // The employee number is for the employee at position j in the target bucket's ArrayList.
+				return(buckets[targetBucket].get(j)); // The employee number is for the employee at position j in the target bucket's ArrayList.
 			}			
 		}
 		
-		return(-1); // The employee number was not found for any employee in target bucket's ArrayList.
+		return(null); // The employee number was not found for any employee in target bucket's ArrayList.
 		
 	} // end searchByEmployeeNumber
 	
-	
+	public FTE searchByFTEEmployeeNumber (int employeeNum) {
+            int targetBucket = calcBucket(employeeNum);
+		
+		// Walk through the ArrayList and look for the employee.
+		for (int j = 0; j < buckets[targetBucket].size(); j++) {
+			if (employeeNum == buckets[targetBucket].get(j).getEmpNum()) {
+                            return(FTE) (buckets[targetBucket].get(j));
+                        }
+        }
+                return(null);
+        }
+        
+        public PTE searchByPTEEmployeeNumber (int employeeNum) {
+            int targetBucket = calcBucket(employeeNum);
+		
+		// Walk through the ArrayList and look for the employee.
+		for (int j = 0; j < buckets[targetBucket].size(); j++) {
+			if (employeeNum == buckets[targetBucket].get(j).getEmpNum()) {
+                            return(PTE) (buckets[targetBucket].get(j));
+                        }
+        }
+                return(null);
+        }
 	
 	public void displayContents() {
 		
