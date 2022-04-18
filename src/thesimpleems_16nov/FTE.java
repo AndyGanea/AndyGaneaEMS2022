@@ -19,7 +19,7 @@ public class FTE extends EmployeeInfo {
     /**
      *
      */
-    private double yearlySalary;
+    public double yearlySalary;
     
     /**
      *

@@ -16,6 +16,18 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
      */
     public DisplayEmployeeJFrame() {
         initComponents();
+        
+        jTextField7.setVisible(false);
+        jTextField8.setVisible(false);
+        jTextField9.setVisible(false);
+        jTextField10.setVisible(false);
+        jTextField11.setVisible(false);
+        jLabel7.setVisible(false);
+        jLabel8.setVisible(false);
+        jLabel9.setVisible(false);
+        jLabel10.setVisible(false);
+        jLabel11.setVisible(false);
+        
     }
 
     public void setMainHT(MyHashTable theRefVal) {
@@ -73,9 +85,20 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
 
         jLabel3.setText("First Name");
 
+        jTextField3.setText("                              ");
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+
         jLabel4.setText("Last Name");
 
+        jTextField4.setText("                            ");
+
         jLabel5.setText("Type of Employee");
+
+        jTextField5.setText("                                 ");
 
         jLabel6.setText("Deduction Rate");
 
@@ -83,15 +106,37 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
 
         jLabel8.setText("Hourly Wage");
 
+        jTextField8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField8ActionPerformed(evt);
+            }
+        });
+
         jLabel9.setText("Hours per Week");
 
         jLabel10.setText("Weeks Per Year");
 
         jLabel11.setText("Annual Net Income");
 
-        jButton1.setText("Display Employee Info");
+        jTextField11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField11ActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Exit");
+        jButton1.setText("Display Employee Info");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Return To Main Menu");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -120,17 +165,18 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
                             .addComponent(jLabel10)
                             .addComponent(jLabel11))
                         .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField4)
-                            .addComponent(jTextField5)
-                            .addComponent(jTextField6)
-                            .addComponent(jTextField7)
-                            .addComponent(jTextField8)
-                            .addComponent(jTextField9)
-                            .addComponent(jTextField10)
-                            .addComponent(jTextField11, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextField11, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField10, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField9, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField8, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField6, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.LEADING)))))
                 .addContainerGap(101, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
@@ -207,10 +253,98 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField2ActionPerformed
-
+ 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        int EmployeeNumberToBeDisplayed = Integer.parseInt(jTextField1.getText());
+        
+        jTextField2.setText("Here is the information for Employee # " + EmployeeNumberToBeDisplayed + ": ");
+        
+        EmployeeInfo EmployeeToBeDisplayed;
+        FTE FTEToBeDisplayed = null;
+        PTE PTEToBeDisplayed = null;
+        
+        EmployeeToBeDisplayed = mainHT.searchByEmployeeNumber(EmployeeNumberToBeDisplayed);
+        
+        if (EmployeeToBeDisplayed == null) {
+            jTextField2.setText("That employee does not exist! Please enter another employee number.");
+        } else {
+            jTextField3.setText(EmployeeToBeDisplayed.firstName);
+            jTextField4.setText(EmployeeToBeDisplayed.lastName);
+            
+            if (EmployeeToBeDisplayed instanceof PTE) {
+                PTEToBeDisplayed = mainHT.searchByPTEEmployeeNumber(EmployeeNumberToBeDisplayed);
+                
+                String PTEDeductionRate = Double.toString(PTEToBeDisplayed.deductRate);
+                String HourlyWage = Double.toString(PTEToBeDisplayed.hourlyWage);
+                String HoursPerWeek = Double.toString(PTEToBeDisplayed.hoursPerWeek);
+                String WeeksPerYear = Double.toString(PTEToBeDisplayed.weeksPerYear);
+                String PartTimeAnnualIncome = Double.toString(PTEToBeDisplayed.CalcPTEAnnualNetIncome());
+                
+                jTextField8.setVisible(true);
+                jTextField9.setVisible(true);
+                jTextField10.setVisible(true);
+                jTextField11.setVisible(true);
+                jLabel8.setVisible(true);
+                jLabel9.setVisible(true);
+                jLabel10.setVisible(true);
+                jLabel11.setVisible(true);
+                
+                jTextField8.setText(HourlyWage);
+                jTextField9.setText(HoursPerWeek);
+                jTextField10.setText(WeeksPerYear);
+                jTextField11.setText(PartTimeAnnualIncome);
+                jTextField5.setText("PTE");
+                jTextField6.setText(PTEDeductionRate);
+                
+                jTextField7.setVisible(false);
+                jLabel7.setVisible(false);
+                
+                
+            } else {
+                FTEToBeDisplayed = mainHT.searchByFTEEmployeeNumber(EmployeeNumberToBeDisplayed);
+                String FTEDeductionRate = Double.toString(FTEToBeDisplayed.deductRate);
+                String YearlySalary = Double.toString(FTEToBeDisplayed.yearlySalary);
+                String FTEAnnualIncome = Double.toString(FTEToBeDisplayed.calcAnnualNetIncome());
+                
+                
+                jTextField7.setVisible(true);
+                jTextField11.setVisible(true);
+                jLabel7.setVisible(true);
+                jLabel11.setVisible(true);
+                
+                jTextField7.setText(YearlySalary);
+                jTextField11.setText(FTEAnnualIncome);
+                jTextField6.setText(FTEDeductionRate);
+                jTextField5.setText("FTE");
+                
+            }
+        }
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField11ActionPerformed
+
+    private void jTextField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField8ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
 
     /**
      * @param args the command line arguments
