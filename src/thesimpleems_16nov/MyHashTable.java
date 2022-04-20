@@ -62,6 +62,19 @@ public class MyHashTable {
 		}
 		
 	} // end AddEmployee
+        
+        
+        public boolean removeEmployee(int employeeNum) {
+            if (employeeNum == 0) {
+                return false;
+            }
+            else {
+                int targetBucket = calcBucket(employeeNum);
+                boolean removedEmployee = buckets[targetBucket].remove(searchByEmployeeNumber(employeeNum));
+                numInHashTable--;
+                return removedEmployee;
+            }
+        }
 	
 	
 	

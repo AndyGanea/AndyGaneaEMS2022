@@ -266,8 +266,12 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
-        int EmployeeNumberToBeDisplayed = Integer.parseInt(jTextField1.getText());
+        int EmployeeNumberToBeDisplayed = Integer.parseInt("0" + jTextField1.getText());
         
+        if (EmployeeNumberToBeDisplayed == 0) {
+            jTextField2.setText("Please enter an employee number!");
+            return;
+        }
         jTextField2.setText("Here is the information for Employee # " + EmployeeNumberToBeDisplayed + ": ");
         
         EmployeeInfo EmployeeToBeDisplayed;
