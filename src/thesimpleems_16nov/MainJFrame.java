@@ -164,15 +164,15 @@ public class MainJFrame extends javax.swing.JFrame {
         FTE theFTE;
         PTE thePTE;
         
-        theFTE = new FTE(111111, "Elmer", "Fudd", 0, 3, 0.2, 80000.00);
+        theFTE = new FTE(111111, "Elmer", "Fudd", "Male", "Mississauga", 0.2, 80000.00);
         theHT.addEmployee(theFTE);
         System.out.println("Added the FTE to the hash table!");
                 
-        thePTE = new PTE(222222, "Daffy", "Duck", 0, 2, 0.22, 10.0, 20.0, 30.0);
+        thePTE = new PTE(222222, "Daffy", "Duck", "Male", "Mississauga", 0.22, 10.0, 20.0, 30.0);
         theHT.addEmployee(thePTE);
         System.out.println("Added the PTE to the hash table!");
                 
-        theFTE = new FTE(333333, "Lola", "Bunny", 1, 5, 0.17, 90000.00);
+        theFTE = new FTE(333333, "Lola", "Bunny", "Female", "Mississauga", 0.17, 90000.00);
         theHT.addEmployee(theFTE);
         System.out.println("Added the FTE to the hash table!");
 
