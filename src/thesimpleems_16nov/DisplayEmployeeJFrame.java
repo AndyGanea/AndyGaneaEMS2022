@@ -28,6 +28,19 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
         jLabel10.setVisible(false);
         jLabel11.setVisible(false);
         
+        
+        jTextField3.setEditable(false);
+        jTextField4.setEditable(false);
+        jTextField5.setEditable(false);
+        jTextField6.setEditable(false);
+        jTextField7.setEditable(false);
+        jTextField8.setEditable(false);
+        jTextField9.setEditable(false);
+        jTextField10.setEditable(false);
+        jTextField11.setEditable(false);
+        jTextField12.setEditable(false);
+        jTextField13.setEditable(false);
+        
     }
 
     public void setMainHT(MyHashTable theRefVal) {
