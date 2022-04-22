@@ -54,6 +54,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
 
         jButton5.setText("Save all employees to file");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -113,12 +114,19 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton9.setText("Edit info for a single employee");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(203, Short.MAX_VALUE)
+                .addContainerGap(294, Short.MAX_VALUE)
                 .addComponent(jButton6))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,7 +139,8 @@ public class MainJFrame extends javax.swing.JFrame {
                             .addComponent(jButton2)
                             .addComponent(jButton4)
                             .addComponent(jButton3)
-                            .addComponent(jButton8))
+                            .addComponent(jButton8)
+                            .addComponent(jButton9))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -149,7 +158,9 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(jButton8)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
                 .addComponent(jButton7)
                 .addGap(21, 21, 21))
         );
@@ -236,6 +247,14 @@ public class MainJFrame extends javax.swing.JFrame {
         theRemoveEmployeeJFrame.setMainHT(refVal);
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        // TODO add your handling code here:
+        EditEmployeeJFrame theEditEmployeeJFrame = new EditEmployeeJFrame();
+        theEditEmployeeJFrame.setVisible(true);
+        MyHashTable refVal = getTheHT();
+        theEditEmployeeJFrame.setMainHT(refVal);
+    }//GEN-LAST:event_jButton9ActionPerformed
+
     
     
     /**
@@ -283,5 +302,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     // End of variables declaration//GEN-END:variables
 }

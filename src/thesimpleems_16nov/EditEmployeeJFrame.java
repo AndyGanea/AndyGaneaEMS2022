@@ -8,13 +8,14 @@ package thesimpleems_16nov;
  *
  * @author Andy
  */
-public class DisplayEmployeeJFrame extends javax.swing.JFrame {
+public class EditEmployeeJFrame extends javax.swing.JFrame {
 
     private MyHashTable mainHT;
+    private int oldEmployeeNumber;
     /**
      * Creates new form DisplayEmployeeJFrame
      */
-    public DisplayEmployeeJFrame() {
+    public EditEmployeeJFrame() {
         initComponents();
         
         jTextField7.setVisible(false);
@@ -27,6 +28,9 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
         jLabel9.setVisible(false);
         jLabel10.setVisible(false);
         jLabel11.setVisible(false);
+        
+        jTextField2.setEditable(false);
+        jTextField11.setEditable(false);
         
     }
 
@@ -70,6 +74,7 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jTextField12 = new javax.swing.JTextField();
         jTextField13 = new javax.swing.JTextField();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -163,6 +168,13 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setText("Save and Edit");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -171,6 +183,8 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3)
+                .addGap(97, 97, 97)
                 .addComponent(jButton2)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
@@ -267,7 +281,8 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
                 .addContainerGap())
         );
 
@@ -307,7 +322,7 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
         PTE PTEToBeDisplayed = null;
         
         EmployeeToBeDisplayed = mainHT.searchByEmployeeNumber(EmployeeNumberToBeDisplayed);
-        
+        oldEmployeeNumber = EmployeeNumberToBeDisplayed;
         
         if (EmployeeToBeDisplayed == null) {
             jTextField2.setText("That employee does not exist! Please enter another employee number.");
@@ -326,6 +341,8 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
                 String WeeksPerYear = Double.toString(PTEToBeDisplayed.weeksPerYear);
                 String PartTimeAnnualIncome = Double.toString(PTEToBeDisplayed.CalcPTEAnnualNetIncome());
                 
+                jTextField7.setVisible(true);
+                jLabel7.setVisible(true);
                 jTextField8.setVisible(true);
                 jTextField9.setVisible(true);
                 jTextField10.setVisible(true);
@@ -342,8 +359,8 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
                 jTextField5.setText("PTE");
                 jTextField6.setText(PTEDeductionRate);
                 
-                jTextField7.setVisible(false);
-                jLabel7.setVisible(false);
+                jTextField7.setText("");
+                jLabel7.setText("");
                 
                 
             } else {
@@ -357,12 +374,22 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
                 jTextField11.setVisible(true);
                 jLabel7.setVisible(true);
                 jLabel11.setVisible(true);
+                jTextField8.setVisible(true);
+                jTextField9.setVisible(true);
+                jTextField10.setVisible(true);
+                jTextField11.setVisible(true);
+                jLabel8.setVisible(true);
+                jLabel9.setVisible(true);
+                jLabel10.setVisible(true);
+                jLabel11.setVisible(true);
                 
                 jTextField7.setText(YearlySalary);
                 jTextField11.setText(FTEAnnualIncome);
                 jTextField6.setText(FTEDeductionRate);
                 jTextField5.setText("FTE");
-                
+                jTextField8.setText("");
+                jTextField9.setText("");
+                jTextField10.setText("");
             }
         }
         
@@ -389,6 +416,46 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField13ActionPerformed
 
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+        
+        mainHT.removeEmployee(oldEmployeeNumber);
+        
+        int newEmployeeNum;
+        String newFirstName;
+        String newLastName;
+        String newGender;
+        String newWorkLocation;
+        String newTypeOfEmployee;
+        Double newDeductionRate;
+        Double newYearlySalary;
+        Double newHourlyWage;
+        Double newHoursPerWeek;
+        Double newWeeksPerYear;
+        
+        newEmployeeNum = Integer.parseInt(jTextField1.getText());
+        newFirstName = jTextField3.getText();
+        newLastName = jTextField4.getText();
+        newGender = jTextField12.getText();
+        newWorkLocation = jTextField13.getText();
+        newTypeOfEmployee = jTextField5.getText();
+        newDeductionRate = Double.parseDouble(jTextField6.getText());
+        
+        
+        
+        if (newTypeOfEmployee.equals("FTE")) {
+            newYearlySalary = Double.parseDouble(jTextField7.getText());
+            FTE theFTE = new FTE(newEmployeeNum, newFirstName, newLastName, newGender, newWorkLocation, newDeductionRate, newYearlySalary);
+            mainHT.addEmployee(theFTE);
+        } else if (newTypeOfEmployee.equals("PTE")) {
+            newHourlyWage = Double.parseDouble(jTextField8.getText());
+            newHoursPerWeek = Double.parseDouble(jTextField9.getText());
+            newWeeksPerYear = Double.parseDouble(jTextField10.getText());
+            PTE thePTE = new PTE(newEmployeeNum, newFirstName, newLastName, newGender, newWorkLocation, newDeductionRate, newHourlyWage, newHoursPerWeek, newWeeksPerYear);
+            mainHT.addEmployee(thePTE);
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -406,20 +473,21 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DisplayEmployeeJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditEmployeeJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DisplayEmployeeJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditEmployeeJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DisplayEmployeeJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditEmployeeJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DisplayEmployeeJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EditEmployeeJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new DisplayEmployeeJFrame().setVisible(true);
+                new EditEmployeeJFrame().setVisible(true);
             }
         });
     }
@@ -427,6 +495,7 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
