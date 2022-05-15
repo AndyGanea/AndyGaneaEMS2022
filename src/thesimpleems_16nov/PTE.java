@@ -22,4 +22,16 @@ public class PTE extends EmployeeInfo {
     public double CalcPTEAnnualNetIncome() {
         return (hourlyWage * hoursPerWeek * weeksPerYear) * (1 - deductRate);
     }
+    
+    public double getHourlyWage() {
+        return hourlyWage;
+    }
+
+    public double getHoursPerWeek() {
+        return hoursPerWeek;
+    }
+
+    public double getWeeksPerYear() {
+        return weeksPerYear;
+    }
 }

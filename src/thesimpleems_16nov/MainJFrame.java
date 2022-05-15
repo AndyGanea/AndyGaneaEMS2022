@@ -1,6 +1,23 @@
 package thesimpleems_16nov;
 
 import java.awt.Dimension;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -221,6 +238,67 @@ public class MainJFrame extends javax.swing.JFrame {
         // Here, I need code that reads the attribute values for the employee
         // data stored in a text file (by say using buffered reader) and adding
         // each of those employees to the hash table.
+        try {
+            Scanner sc = new Scanner(new FileReader("EmployeeStorage.txt"));
+            
+            
+            String line = null;
+            String[] values;
+            
+            while(sc.hasNextLine()){
+                line = sc.nextLine();
+                values = line.split("\\|"); // splits with |
+                for(int i=0; i<values.length; i++)  {
+                    values[i] = values[i].replaceAll("!@!", "\\|");
+                }
+                try{
+                    if(values[0].equals("FTE")){
+
+                        int theEmpNum = Integer.parseInt(values[1]);
+                        String theFirstName = values[2];
+                        String theLastName = values[3];
+                        String gender = values[4];
+                        String workLoc = values[5];
+                        
+                        double deductRate = Double.parseDouble(values[6]);
+
+                        FTE theFTE;
+
+                        double yearlySalary = Double.parseDouble(values[7]);
+                        theFTE = new FTE(theEmpNum, theFirstName, theLastName,
+                                    gender, workLoc, deductRate, yearlySalary);
+                        theHT.addEmployee(theFTE);
+
+                    }else if(values[0].equals("PTE")){
+
+                        int theEmpNum = Integer.parseInt(values[1]);
+                        String theFirstName = values[2];
+                        String theLastName = values[3];
+                        String gender = values[4];
+                        String workLoc = values[5];
+                        
+                        double deductRate = Double.parseDouble(values[6]);
+
+                        PTE thePTE;
+
+                        double hourlyWage = Double.parseDouble(values[7]);
+                        double hoursPerWeek = Double.parseDouble(values[8]);
+                        double weeksPerYear = Double.parseDouble(values[9]);
+
+                        thePTE = new PTE(theEmpNum, theFirstName, theLastName, gender,
+                        workLoc, deductRate, hourlyWage, hoursPerWeek, weeksPerYear);
+                        theHT.addEmployee(thePTE);
+                                                
+                    }
+
+
+                }catch(Exception e){
+                    continue;
+                }
+            }
+        } catch (FileNotFoundException ex) {
+            System.err.println("File Not Found!");
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -237,6 +315,38 @@ public class MainJFrame extends javax.swing.JFrame {
         // Here, I need code that walks through the entire hash table
         // and writes the attribute values for each employee to a
         // text file (by using say buffered writer).
+        try {
+                FileWriter inputFile = new FileWriter("EmployeeStorage.txt", false);
+                inputFile.write("");
+                inputFile.flush();
+                inputFile.close();
+                FileWriter rewriter = new FileWriter("EmployeeStorage.txt", true);
+                for (int i = 0; i < theHT.buckets.length; i++) {
+                    for (int j = 0; j < theHT.buckets[i].size(); j++) {
+                        EmployeeInfo emp = theHT.buckets[i].get(j);
+                        
+                        if (emp instanceof FTE) {
+                            emp.firstName = emp.firstName.replaceAll("\\|", "!@!");
+                            emp.lastName = emp.lastName.replaceAll("\\|", "!@!");
+                            rewriter.write("FTE|" + emp.empNum + "|" + emp.firstName + "|" + emp.lastName + "|" +
+                                emp.gender + "|" + emp.workLoc + "|" + emp.deductRate + "|" + ((FTE) emp).getYearlySalary() + "\n");
+                        }
+                        else if(emp instanceof PTE){
+                        emp.firstName = emp.firstName.replaceAll("\\|", "!@!");
+                        emp.lastName = emp.lastName.replaceAll("\\|", "!@!");
+                        rewriter.write("PTE|" + emp.empNum + "|" + emp.firstName + "|" + emp.lastName + "|" +
+                                emp.gender + "|" + emp.workLoc + "|" + emp.deductRate + "|" + ((PTE) emp).getHourlyWage() +
+                                "|" + ((PTE) emp).getHoursPerWeek() + "|" + ((PTE) emp).getWeeksPerYear() + "\n");
+                    }
+                        
+                    }
+                }
+                rewriter.flush();
+                rewriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
