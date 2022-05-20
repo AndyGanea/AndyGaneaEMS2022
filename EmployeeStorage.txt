@@ -1,3 +1,1 @@
-FTE|111111|Elmer|Fudd|Male|Mississauga|0.2|80000.0
-PTE|222222|Daffy|Duck|Male|Mississauga|0.22|10.0|20.0|30.0
-FTE|333333|Lola|Bunny|Female|Mississauga|0.17|90000.0
+FTE|5|Jeffrey|Li|J|N|0.5|0.9

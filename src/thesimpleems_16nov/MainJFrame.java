@@ -17,6 +17,8 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
+import java.util.concurrent.TimeUnit;
+import java.util.Date;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -40,9 +42,9 @@ public class MainJFrame extends javax.swing.JFrame {
      */
     public MainJFrame() {
         initComponents();
-        
-        theHT = new MyHashTable(10);
-        System.out.println("HERE HERE");
+        jTextField1.setEditable(false);
+        jTextField2.setEditable(false);
+        theHT = new MyHashTable(10); // Creates a new hash table with 10 buckets in it.
         
     }
     
@@ -50,7 +52,7 @@ public class MainJFrame extends javax.swing.JFrame {
     // METHODS   
     
     public MyHashTable getTheHT() {
-        return theHT;
+        return theHT; // Getter method for retrieving the hash table.
     }
 
     /**
@@ -64,7 +66,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
         jButton5 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
@@ -72,6 +73,9 @@ public class MainJFrame extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
 
         jButton5.setText("Save all employees to file");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -81,13 +85,6 @@ public class MainJFrame extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jButton1.setText("Create three employees, add to hash table");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jButton2.setText("Display all of the employees in the hash table");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -138,38 +135,47 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+        jLabel1.setText("Employee Management System");
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(294, Short.MAX_VALUE)
-                .addComponent(jButton6))
-            .addGroup(layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextField1)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                    .addComponent(jButton3)
+                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4)
+                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton7))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2)
-                            .addComponent(jButton4)
-                            .addComponent(jButton3)
-                            .addComponent(jButton8)
-                            .addComponent(jButton9))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(15, 15, 15))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(116, 116, 116))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jButton6)
-                .addGap(21, 21, 21)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
-                .addGap(18, 18, 18)
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(14, 14, 14)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton3)
                 .addGap(18, 18, 18)
                 .addComponent(jButton8)
@@ -177,34 +183,19 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addComponent(jButton4)
                 .addGap(18, 18, 18)
                 .addComponent(jButton9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                .addComponent(jButton7)
-                .addGap(21, 21, 21))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton6)
+                    .addComponent(jButton7))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-       
-        FTE theFTE;
-        PTE thePTE;
-        
-        theFTE = new FTE(111111, "Elmer", "Fudd", "Male", "Mississauga", 0.2, 80000.00);
-        theHT.addEmployee(theFTE);
-        System.out.println("Added the FTE to the hash table!");
-                
-        thePTE = new PTE(222222, "Daffy", "Duck", "Male", "Mississauga", 0.22, 10.0, 20.0, 30.0);
-        theHT.addEmployee(thePTE);
-        System.out.println("Added the PTE to the hash table!");
-                
-        theFTE = new FTE(333333, "Lola", "Bunny", "Female", "Mississauga", 0.17, 90000.00);
-        theHT.addEmployee(theFTE);
-        System.out.println("Added the FTE to the hash table!");
-
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -219,7 +210,7 @@ public class MainJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         AddNewEmployeeJFrame theANEJFrame = new AddNewEmployeeJFrame();
         theANEJFrame.setVisible(true);
-        theANEJFrame.setPreferredSize(new Dimension(810, 810));
+        theANEJFrame.setPreferredSize(new Dimension(810, 810)); // Set the dimensions of the window to a certain size.
         MyHashTable refVal = getTheHT();
         theANEJFrame.setMainHT(refVal);
     }//GEN-LAST:event_pressed_jButton3
@@ -239,20 +230,20 @@ public class MainJFrame extends javax.swing.JFrame {
         // data stored in a text file (by say using buffered reader) and adding
         // each of those employees to the hash table.
         try {
-            Scanner sc = new Scanner(new FileReader("EmployeeStorage.txt"));
+            Scanner sc = new Scanner(new FileReader("EmployeeStorage.txt")); // The Scanner opens the file called EmployeeStorage.txt, where the employees are stored.
             
             
             String line = null;
             String[] values;
             
-            while(sc.hasNextLine()){
+            while(sc.hasNextLine()){ // This while loop goes through the text file until there is an empty line, signifying it has reached the end of the file.
                 line = sc.nextLine();
                 values = line.split("\\|"); // splits with |
-                for(int i=0; i<values.length; i++)  {
+                for(int i = 0; i < values.length; i++)  {
                     values[i] = values[i].replaceAll("!@!", "\\|");
                 }
                 try{
-                    if(values[0].equals("FTE")){
+                    if(values[0].equals("FTE")){ // Reads through the specific fields if the Scanner sees the employee is an FTE.
 
                         int theEmpNum = Integer.parseInt(values[1]);
                         String theFirstName = values[2];
@@ -267,7 +258,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         double yearlySalary = Double.parseDouble(values[7]);
                         theFTE = new FTE(theEmpNum, theFirstName, theLastName,
                                     gender, workLoc, deductRate, yearlySalary);
-                        theHT.addEmployee(theFTE);
+                        theHT.addEmployee(theFTE); // These lines create a new FTE with the read information, and save it to the hash table.
 
                     }else if(values[0].equals("PTE")){
 
@@ -287,17 +278,23 @@ public class MainJFrame extends javax.swing.JFrame {
 
                         thePTE = new PTE(theEmpNum, theFirstName, theLastName, gender,
                         workLoc, deductRate, hourlyWage, hoursPerWeek, weeksPerYear);
-                        theHT.addEmployee(thePTE);
+                        theHT.addEmployee(thePTE); // These lines create a new PTE with the read information and save it to the hash table.
                                                 
                     }
-
+                    
+                
 
                 }catch(Exception e){
                     continue;
                 }
             }
+            jTextField1.setText("Successfully loaded hash table from file!");
+            TimeUnit.SECONDS.sleep(2);
+            // jTextField2.setText(" ");
         } catch (FileNotFoundException ex) {
             System.err.println("File Not Found!");
+        } catch (InterruptedException ex) {
+            Logger.getLogger(MainJFrame.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -316,22 +313,18 @@ public class MainJFrame extends javax.swing.JFrame {
         // and writes the attribute values for each employee to a
         // text file (by using say buffered writer).
         try {
-                FileWriter inputFile = new FileWriter("EmployeeStorage.txt", false);
-                inputFile.write("");
-                inputFile.flush();
-                inputFile.close();
-                FileWriter rewriter = new FileWriter("EmployeeStorage.txt", true);
+                FileWriter rewriter = new FileWriter("EmployeeStorage.txt", true); // This line specifies that the FileWriter will be writing to "EmployeeStorage.txt"
                 for (int i = 0; i < theHT.buckets.length; i++) {
-                    for (int j = 0; j < theHT.buckets[i].size(); j++) {
+                    for (int j = 0; j < theHT.buckets[i].size(); j++) { // These lines go through the entire Hash table to get the information of each employee.
                         EmployeeInfo emp = theHT.buckets[i].get(j);
                         
-                        if (emp instanceof FTE) {
+                        if (emp instanceof FTE) { // This if statement checks if the employee is Full Time, and saves them accordingly
                             emp.firstName = emp.firstName.replaceAll("\\|", "!@!");
                             emp.lastName = emp.lastName.replaceAll("\\|", "!@!");
                             rewriter.write("FTE|" + emp.empNum + "|" + emp.firstName + "|" + emp.lastName + "|" +
                                 emp.gender + "|" + emp.workLoc + "|" + emp.deductRate + "|" + ((FTE) emp).getYearlySalary() + "\n");
                         }
-                        else if(emp instanceof PTE){
+                        else if(emp instanceof PTE){ // This else if will only run if the employee is not an FTE, which means that it is a PTE.
                         emp.firstName = emp.firstName.replaceAll("\\|", "!@!");
                         emp.lastName = emp.lastName.replaceAll("\\|", "!@!");
                         rewriter.write("PTE|" + emp.empNum + "|" + emp.firstName + "|" + emp.lastName + "|" +
@@ -341,12 +334,13 @@ public class MainJFrame extends javax.swing.JFrame {
                         
                     }
                 }
+                jTextField2.setText("Successfully saved hash table to file!");
                 rewriter.flush();
                 rewriter.close();
+
             } catch (IOException e) {
                 e.printStackTrace();
-            }
-        
+            } 
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
@@ -364,6 +358,10 @@ public class MainJFrame extends javax.swing.JFrame {
         MyHashTable refVal = getTheHT();
         theEditEmployeeJFrame.setMainHT(refVal);
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     
     
@@ -404,7 +402,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -413,5 +410,8 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

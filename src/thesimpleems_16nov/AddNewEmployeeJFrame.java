@@ -72,6 +72,7 @@ public class AddNewEmployeeJFrame extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
         jTextField10 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -195,6 +196,7 @@ public class AddNewEmployeeJFrame extends javax.swing.JFrame {
 
         jLabel9.setText("Deduction Rate");
 
+        jTextField8.setToolTipText("Enter a Deduction Rate as a decimal (0.04 = 4%)");
         jTextField8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField8ActionPerformed(evt);
@@ -214,6 +216,8 @@ public class AddNewEmployeeJFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel12.setText("Please fill out all fields BEFORE pressing Add!");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -221,14 +225,14 @@ public class AddNewEmployeeJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(205, 205, 205)
-                        .addComponent(jButton1)
-                        .addGap(56, 56, 56)
-                        .addComponent(jButton2))
+                        .addContainerGap()
+                        .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(87, 87, 87)
+                        .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 660, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
@@ -257,11 +261,15 @@ public class AddNewEmployeeJFrame extends javax.swing.JFrame {
                                             .addComponent(jTextField9, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                                             .addComponent(jTextField10)))))))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(87, 87, 87)
-                        .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 260, Short.MAX_VALUE))
+                        .addGap(205, 205, 205)
+                        .addComponent(jButton1)
+                        .addGap(56, 56, 56)
+                        .addComponent(jButton2)))
+                .addGap(0, 144, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(178, 178, 178)
+                .addComponent(jLabel12)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,7 +302,9 @@ public class AddNewEmployeeJFrame extends javax.swing.JFrame {
                     .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addGap(41, 41, 41)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))
@@ -308,6 +318,9 @@ public class AddNewEmployeeJFrame extends javax.swing.JFrame {
     private void addTheNewEmployee(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTheNewEmployee
         // TODO add your handling code here:
         
+        int EmployeeNumberToBeDisplayed = Integer.parseInt("0" + jTextField1.getText());
+        EmployeeInfo EmployeeToBeAdded;
+        
         int theEmpNum = Integer.parseInt(jTextField1.getText());
         String theFirstName = jTextField2.getText();
         String theLastName = jTextField3.getText();
@@ -315,32 +328,39 @@ public class AddNewEmployeeJFrame extends javax.swing.JFrame {
         String theLocation = jTextField10.getText();
         double theDeductionRate = Double.parseDouble(jTextField8.getText());
         
-        if (jInternalFrame1.isVisible() == true) {
+        EmployeeToBeAdded = mainHT.searchByEmployeeNumber(EmployeeNumberToBeDisplayed);
+        if (EmployeeToBeAdded != null) {
+            jLabel4.setText("An employee with that employee number already exists!");
+        } else {
+            if (jInternalFrame1.isVisible() == true) {
             double theYearlySalary = Double.parseDouble(jTextField4.getText());
             
             FTE theFTE = new FTE(theEmpNum, theFirstName, theLastName,
                             theGender, theLocation, theDeductionRate, theYearlySalary);
             mainHT.addEmployee(theFTE);
-        } else {
-            double theHourlyWage = Double.parseDouble(jTextField5.getText());
-            double theHoursPerWeek = Double.parseDouble(jTextField6.getText());
-            double theWeeksPerYear = Double.parseDouble(jTextField7.getText());
-            
-            PTE thePTE = new PTE(theEmpNum, theFirstName, theLastName, theGender, theLocation, theDeductionRate, theHourlyWage, theHoursPerWeek, theWeeksPerYear);
-            mainHT.addEmployee(thePTE);
+            } else {
+                double theHourlyWage = Double.parseDouble(jTextField5.getText());
+                double theHoursPerWeek = Double.parseDouble(jTextField6.getText());
+                double theWeeksPerYear = Double.parseDouble(jTextField7.getText());
+
+                PTE thePTE = new PTE(theEmpNum, theFirstName, theLastName, theGender, theLocation, theDeductionRate, theHourlyWage, theHoursPerWeek, theWeeksPerYear);
+                mainHT.addEmployee(thePTE);
+            }
+             jLabel4.setText("Added new employee:  " + jTextField1.getText() + " "
+                        + theFirstName + " " + theLastName);       
+            jLabel4.setVisible(true);
+        
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+            jTextField7.setText("");
+            jTextField8.setText("");
         }
         
-        jLabel4.setText("Added new employee:  " + jTextField1.getText() + " "
-                        + theFirstName + " " + theLastName);       
-        jLabel4.setVisible(true);
         
-        jTextField1.setText("");
-        jTextField2.setText("");
-        jTextField3.setText("");
-        jTextField5.setText("");
-        jTextField6.setText("");
-        jTextField7.setText("");
-        jTextField8.setText("");
+       
     }//GEN-LAST:event_addTheNewEmployee
 
     
@@ -418,6 +438,7 @@ public class AddNewEmployeeJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
