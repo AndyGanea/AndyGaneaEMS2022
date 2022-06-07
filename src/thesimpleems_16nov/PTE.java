@@ -4,12 +4,12 @@ package thesimpleems_16nov;
 
 public class PTE extends EmployeeInfo {
     
-    
+    // ATTRIBUTES
     public double hourlyWage;
     public double hoursPerWeek;
     public double weeksPerYear;
     
-    
+    // CONSTRUCTOR
     public PTE(int eN, String fN, String lN, String g, String wL, double dR, double hW, double hPW, double wPY) {       
         
         super(eN, fN, lN, g, wL, dR);
@@ -19,7 +19,9 @@ public class PTE extends EmployeeInfo {
         
     }
     
-    public double CalcPTEAnnualNetIncome() {
+    // METHODS
+    
+    public double CalcPTEAnnualNetIncome() { // methods
         return (hourlyWage * hoursPerWeek * weeksPerYear) * (1 - deductRate);
     }
     

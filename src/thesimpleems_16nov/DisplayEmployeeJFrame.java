@@ -28,7 +28,7 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
         jLabel10.setVisible(false);
         jLabel11.setVisible(false);
         
-        
+        jTextField2.setEditable(false);
         jTextField3.setEditable(false);
         jTextField4.setEditable(false);
         jTextField5.setEditable(false);
@@ -39,7 +39,7 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
         jTextField10.setEditable(false);
         jTextField11.setEditable(false);
         jTextField12.setEditable(false);
-        jTextField13.setEditable(false);
+        jTextField13.setEditable(false); // The user should not be able to edit any text fields except for the first one.
         
     }
 
@@ -310,7 +310,7 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
         int EmployeeNumberToBeDisplayed = Integer.parseInt("0" + jTextField1.getText());
         
         if (EmployeeNumberToBeDisplayed == 0) {
-            jTextField2.setText("Please enter an employee number!");
+            jTextField2.setText("Please enter an employee number!"); // If the text field is empty, this will be displayed because 0 is added to the number input above.
             return;
         }
         jTextField2.setText("Here is the information for Employee # " + EmployeeNumberToBeDisplayed + ": ");
@@ -319,16 +319,16 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
         FTE FTEToBeDisplayed = null;
         PTE PTEToBeDisplayed = null;
         
-        EmployeeToBeDisplayed = mainHT.searchByEmployeeNumber(EmployeeNumberToBeDisplayed);
+        EmployeeToBeDisplayed = mainHT.searchByEmployeeNumber(EmployeeNumberToBeDisplayed); // Searches to see if the employee being looked up actually exists.
         
         
-        if (EmployeeToBeDisplayed == null) {
+        if (EmployeeToBeDisplayed == null) { // If the user does not exist, this clause runs.
             jTextField2.setText("That employee does not exist! Please enter another employee number.");
         } else {
             jTextField3.setText(EmployeeToBeDisplayed.firstName);
             jTextField4.setText(EmployeeToBeDisplayed.lastName);
             jTextField12.setText(EmployeeToBeDisplayed.gender);
-            jTextField13.setText(EmployeeToBeDisplayed.workLoc);
+            jTextField13.setText(EmployeeToBeDisplayed.workLoc); // These attributes are common to both FTE and PTE employees, and will always be displayed.
             
             if (EmployeeToBeDisplayed instanceof PTE) {
                 PTEToBeDisplayed = mainHT.searchByPTEEmployeeNumber(EmployeeNumberToBeDisplayed);
@@ -337,7 +337,7 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
                 String HourlyWage = Double.toString(PTEToBeDisplayed.hourlyWage);
                 String HoursPerWeek = Double.toString(PTEToBeDisplayed.hoursPerWeek);
                 String WeeksPerYear = Double.toString(PTEToBeDisplayed.weeksPerYear);
-                String PartTimeAnnualIncome = Double.toString(PTEToBeDisplayed.CalcPTEAnnualNetIncome());
+                String PartTimeAnnualIncome = Double.toString(PTEToBeDisplayed.CalcPTEAnnualNetIncome()); // Converts all of the relevant PTE information to strings.
                 
                 jTextField8.setVisible(true);
                 jTextField9.setVisible(true);
@@ -346,24 +346,24 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
                 jLabel8.setVisible(true);
                 jLabel9.setVisible(true);
                 jLabel10.setVisible(true);
-                jLabel11.setVisible(true);
+                jLabel11.setVisible(true); // Sets all of the relevant text fields and labels visible.
                 
                 jTextField8.setText(HourlyWage);
                 jTextField9.setText(HoursPerWeek);
                 jTextField10.setText(WeeksPerYear);
                 jTextField11.setText(PartTimeAnnualIncome);
                 jTextField5.setText("PTE");
-                jTextField6.setText(PTEDeductionRate);
+                jTextField6.setText(PTEDeductionRate); // Displays all of the information.
                 
                 jTextField7.setVisible(false);
                 jLabel7.setVisible(false);
                 
                 
-            } else {
+            } else { // If the employee is not an instace of PTE, it must be an FTE.
                 FTEToBeDisplayed = mainHT.searchByFTEEmployeeNumber(EmployeeNumberToBeDisplayed);
                 String FTEDeductionRate = Double.toString(FTEToBeDisplayed.deductRate);
                 String YearlySalary = Double.toString(FTEToBeDisplayed.yearlySalary);
-                String FTEAnnualIncome = Double.toString(FTEToBeDisplayed.calcAnnualNetIncome());
+                String FTEAnnualIncome = Double.toString(FTEToBeDisplayed.calcAnnualNetIncome()); // Convert all of the necessary data into strings.
                 
                 
                 jTextField7.setVisible(true);
@@ -374,7 +374,7 @@ public class DisplayEmployeeJFrame extends javax.swing.JFrame {
                 jTextField7.setText(YearlySalary);
                 jTextField11.setText(FTEAnnualIncome);
                 jTextField6.setText(FTEDeductionRate);
-                jTextField5.setText("FTE");
+                jTextField5.setText("FTE"); // Set the relevant text fields visible and put the required text in them.
                 
             }
         }

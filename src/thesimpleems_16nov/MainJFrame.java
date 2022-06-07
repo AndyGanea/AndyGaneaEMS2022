@@ -1,24 +1,17 @@
 package thesimpleems_16nov;
 
 import java.awt.Dimension;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Scanner;
-import java.util.Arrays;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
-import java.util.Date;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -43,7 +36,7 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         jTextField1.setEditable(false);
-        jTextField2.setEditable(false);
+        jTextField2.setEditable(false); // These two text fields show text when the user saves or loads the file, so they shouldn't be editable
         theHT = new MyHashTable(10); // Creates a new hash table with 10 buckets in it.
         
     }
@@ -86,6 +79,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setText("Display all of the employees in the hash table");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -93,6 +87,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton3.setText("Add new employee");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,6 +95,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton6.setText("Load all employees from file");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -107,6 +103,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton4.setText("Display info for a single employee");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -114,6 +111,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton7.setText("Save all employees to file");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -121,6 +119,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton8.setText("Remove employee");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,6 +127,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        jButton9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton9.setText("Edit info for a single employee");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -135,7 +135,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 36)); // NOI18N
         jLabel1.setText("Employee Management System");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -152,19 +152,19 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jTextField1)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton4)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                    .addComponent(jButton6)
+                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(15, 15, 15))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(127, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(116, 116, 116))
         );
@@ -191,7 +191,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(45, Short.MAX_VALUE))
         );
 
         pack();
@@ -210,22 +210,17 @@ public class MainJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
         AddNewEmployeeJFrame theANEJFrame = new AddNewEmployeeJFrame();
         theANEJFrame.setVisible(true);
-        theANEJFrame.setPreferredSize(new Dimension(810, 810)); // Set the dimensions of the window to a certain size.
+        theANEJFrame.setPreferredSize(new Dimension(810, 1200)); // Set the dimensions of the window to a certain size.
         MyHashTable refVal = getTheHT();
         theANEJFrame.setMainHT(refVal);
     }//GEN-LAST:event_pressed_jButton3
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        
-        // Here, I need code that walks through the entire hash table
-        // and writes the attribute values for each employee to a
-        // text file (by using say buffered writer).
+        // Unused method from removed button.
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-        
+
         // Here, I need code that reads the attribute values for the employee
         // data stored in a text file (by say using buffered reader) and adding
         // each of those employees to the hash table.
@@ -238,7 +233,7 @@ public class MainJFrame extends javax.swing.JFrame {
             
             while(sc.hasNextLine()){ // This while loop goes through the text file until there is an empty line, signifying it has reached the end of the file.
                 line = sc.nextLine();
-                values = line.split("\\|"); // splits with |
+                values = line.split("\\|"); // splits with | to differentiate between different attributes of the employee
                 for(int i = 0; i < values.length; i++)  {
                     values[i] = values[i].replaceAll("!@!", "\\|");
                 }
@@ -251,7 +246,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         String gender = values[4];
                         String workLoc = values[5];
                         
-                        double deductRate = Double.parseDouble(values[6]);
+                        double deductRate = Double.parseDouble(values[6]); // These lines read data that the array got from the text file.
 
                         FTE theFTE;
 
@@ -260,7 +255,7 @@ public class MainJFrame extends javax.swing.JFrame {
                                     gender, workLoc, deductRate, yearlySalary);
                         theHT.addEmployee(theFTE); // These lines create a new FTE with the read information, and save it to the hash table.
 
-                    }else if(values[0].equals("PTE")){
+                    }else if(values[0].equals("PTE")){ // The other case is if the employee stored is a PTE.
 
                         int theEmpNum = Integer.parseInt(values[1]);
                         String theFirstName = values[2];
@@ -288,7 +283,7 @@ public class MainJFrame extends javax.swing.JFrame {
                     continue;
                 }
             }
-            jTextField1.setText("Successfully loaded hash table from file!");
+            jTextField1.setText("Successfully loaded hash table from file!"); // Updates a text file to give the user feedback that the functionality has been successfully carried out.
             TimeUnit.SECONDS.sleep(2);
             // jTextField2.setText(" ");
         } catch (FileNotFoundException ex) {
@@ -313,7 +308,8 @@ public class MainJFrame extends javax.swing.JFrame {
         // and writes the attribute values for each employee to a
         // text file (by using say buffered writer).
         try {
-                FileWriter rewriter = new FileWriter("EmployeeStorage.txt", true); // This line specifies that the FileWriter will be writing to "EmployeeStorage.txt"
+                FileWriter writeToFile = new FileWriter("EmployeeStorage.txt", true); // This line specifies that the FileWriter will be writing to "EmployeeStorage.txt"
+                
                 for (int i = 0; i < theHT.buckets.length; i++) {
                     for (int j = 0; j < theHT.buckets[i].size(); j++) { // These lines go through the entire Hash table to get the information of each employee.
                         EmployeeInfo emp = theHT.buckets[i].get(j);
@@ -321,13 +317,13 @@ public class MainJFrame extends javax.swing.JFrame {
                         if (emp instanceof FTE) { // This if statement checks if the employee is Full Time, and saves them accordingly
                             emp.firstName = emp.firstName.replaceAll("\\|", "!@!");
                             emp.lastName = emp.lastName.replaceAll("\\|", "!@!");
-                            rewriter.write("FTE|" + emp.empNum + "|" + emp.firstName + "|" + emp.lastName + "|" +
-                                emp.gender + "|" + emp.workLoc + "|" + emp.deductRate + "|" + ((FTE) emp).getYearlySalary() + "\n");
+                            writeToFile.write("FTE|" + emp.empNum + "|" + emp.firstName + "|" + emp.lastName + "|" +
+                                emp.gender + "|" + emp.workLoc + "|" + emp.deductRate + "|" + ((FTE) emp).getYearlySalary() + "\n"); // THis is the line that actually prints out the employee in a textfile
                         }
                         else if(emp instanceof PTE){ // This else if will only run if the employee is not an FTE, which means that it is a PTE.
                         emp.firstName = emp.firstName.replaceAll("\\|", "!@!");
                         emp.lastName = emp.lastName.replaceAll("\\|", "!@!");
-                        rewriter.write("PTE|" + emp.empNum + "|" + emp.firstName + "|" + emp.lastName + "|" +
+                        writeToFile.write("PTE|" + emp.empNum + "|" + emp.firstName + "|" + emp.lastName + "|" +
                                 emp.gender + "|" + emp.workLoc + "|" + emp.deductRate + "|" + ((PTE) emp).getHourlyWage() +
                                 "|" + ((PTE) emp).getHoursPerWeek() + "|" + ((PTE) emp).getWeeksPerYear() + "\n");
                     }
@@ -335,8 +331,8 @@ public class MainJFrame extends javax.swing.JFrame {
                     }
                 }
                 jTextField2.setText("Successfully saved hash table to file!");
-                rewriter.flush();
-                rewriter.close();
+                writeToFile.flush(); // Writes all of the contents in the FileWriter into the text file and clears the stream
+                writeToFile.close(); // Closes the stream, as all of the data has been written by now
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -348,7 +344,7 @@ public class MainJFrame extends javax.swing.JFrame {
         RemoveEmployeeJFrame theRemoveEmployeeJFrame = new RemoveEmployeeJFrame();
         theRemoveEmployeeJFrame.setVisible(true);
         MyHashTable refVal = getTheHT();
-        theRemoveEmployeeJFrame.setMainHT(refVal);
+        theRemoveEmployeeJFrame.setMainHT(refVal); // Opens a new jFrame that allows the user to remove an employee.
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -356,14 +352,13 @@ public class MainJFrame extends javax.swing.JFrame {
         EditEmployeeJFrame theEditEmployeeJFrame = new EditEmployeeJFrame();
         theEditEmployeeJFrame.setVisible(true);
         MyHashTable refVal = getTheHT();
-        theEditEmployeeJFrame.setMainHT(refVal);
+        theEditEmployeeJFrame.setMainHT(refVal); // Opens a new jFrame that allows the user to edit the data of an employee.
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
-
-    
+ 
     
     /**
      * @param args the command line arguments

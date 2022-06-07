@@ -70,9 +70,9 @@ public class MyHashTable {
             }
             else {
                 int targetBucket = calcBucket(employeeNum);
-                boolean removedEmployee = buckets[targetBucket].remove(searchByEmployeeNumber(employeeNum));
-                numInHashTable--;
-                return removedEmployee;
+                boolean removedEmployee = buckets[targetBucket].remove(searchByEmployeeNumber(employeeNum)); // use the inbuilt .remove attribute of an ArrayList to remove an employee.
+                numInHashTable--; // The total amount of employees goes down after one is removed.
+                return removedEmployee; // returns true if the operation is successful.
             }
         }
 	

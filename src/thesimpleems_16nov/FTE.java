@@ -19,6 +19,8 @@ public class FTE extends EmployeeInfo {
     /**
      *
      */
+    
+    // ATTRIBUTES
     public double yearlySalary;
     
     /**
@@ -31,19 +33,23 @@ public class FTE extends EmployeeInfo {
      * @param dR
      * @param yS
      */
+    
+    // CONSTRUCTOR 
+    
     public FTE(int eN, String fN, String lN, String g, String wL, double dR, double yS) {
         super(eN, fN, lN, g, wL, dR);
         yearlySalary = yS;
         
     }
     
+    // METHODS
     
     public double getYearlySalary() {
         return yearlySalary;
     }
     
     
-    public double calcAnnualNetIncome() {
+    public double calcAnnualNetIncome() { // Method that calculated the annual net income based on a yearly salary.
         return (yearlySalary *(1.0 - deductRate));
     }
     

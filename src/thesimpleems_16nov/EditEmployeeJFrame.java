@@ -315,6 +315,8 @@ public class EditEmployeeJFrame extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         
+        // The funcionality of pressing this button is exactly the same as the functionality of displaying the full information of an employee.
+        // The comments explaining the functionality of this code can be found in DisplayEmployeeJFrame, as they are identical.
         int EmployeeNumberToBeDisplayed = Integer.parseInt("0" + jTextField1.getText());
         
         if (EmployeeNumberToBeDisplayed == 0) {
@@ -436,7 +438,7 @@ public class EditEmployeeJFrame extends javax.swing.JFrame {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         
-        mainHT.removeEmployee(oldEmployeeNumber);
+        mainHT.removeEmployee(oldEmployeeNumber); // The employee that already existed in the hash table has to be removed, because no duplicate employee numbers are allowed.
         
         int newEmployeeNum;
         String newFirstName;
@@ -448,7 +450,7 @@ public class EditEmployeeJFrame extends javax.swing.JFrame {
         Double newYearlySalary;
         Double newHourlyWage;
         Double newHoursPerWeek;
-        Double newWeeksPerYear;
+        Double newWeeksPerYear; // Initalize variables to store the attributes of the new employee.
         
         newEmployeeNum = Integer.parseInt(jTextField1.getText());
         newFirstName = jTextField3.getText();
@@ -456,20 +458,21 @@ public class EditEmployeeJFrame extends javax.swing.JFrame {
         newGender = jTextField12.getText();
         newWorkLocation = jTextField13.getText();
         newTypeOfEmployee = jTextField5.getText();
-        newDeductionRate = Double.parseDouble(jTextField6.getText());
+        newDeductionRate = Double.parseDouble(jTextField6.getText()); // Editing an employee is the same as removing an old employee and simply creating a new one.
         
         
         
         if (newTypeOfEmployee.equals("FTE")) {
             newYearlySalary = Double.parseDouble(jTextField7.getText());
             FTE theFTE = new FTE(newEmployeeNum, newFirstName, newLastName, newGender, newWorkLocation, newDeductionRate, newYearlySalary);
-            mainHT.addEmployee(theFTE);
+            mainHT.addEmployee(theFTE); // This is the same code that regularly adds a new employee of type FTE.
+            
         } else if (newTypeOfEmployee.equals("PTE")) {
             newHourlyWage = Double.parseDouble(jTextField8.getText());
             newHoursPerWeek = Double.parseDouble(jTextField9.getText());
             newWeeksPerYear = Double.parseDouble(jTextField10.getText());
             PTE thePTE = new PTE(newEmployeeNum, newFirstName, newLastName, newGender, newWorkLocation, newDeductionRate, newHourlyWage, newHoursPerWeek, newWeeksPerYear);
-            mainHT.addEmployee(thePTE);
+            mainHT.addEmployee(thePTE); // This is the same code that regularly adds a new employee of type PTE.
         }
         
         jTextField1.setEditable(false);
@@ -483,9 +486,9 @@ public class EditEmployeeJFrame extends javax.swing.JFrame {
         jTextField10.setEditable(false);
         jTextField11.setEditable(false);
         jTextField12.setEditable(false);
-        jTextField13.setEditable(false);
+        jTextField13.setEditable(false); // All of the fields become locked again with the inputted information.
         jButton1.setVisible(false);
-        jButton3.setVisible(false);
+        jButton3.setVisible(false); // Make both the display and edit buttons disappear, so the user is forced to close out of the window to edit another time, reducing possible errors.
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
