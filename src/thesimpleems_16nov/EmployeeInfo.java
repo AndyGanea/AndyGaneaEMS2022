@@ -25,7 +25,6 @@ public class EmployeeInfo {
     	deductRate = dR;
     }
     
-    
     // METHODS
     
     public int getEmpNum() {
