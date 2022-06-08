@@ -69,6 +69,10 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         jButton5.setText("Save all employees to file");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -144,25 +148,47 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel2.setText("Course: ICS 4U0-C");
+
+        jLabel4.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel4.setText("By: Andrew Nicholas Ganea");
+
+        jLabel3.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel3.setText("Submitted on: June 7, 2022 ");
+
+        jLabel5.setFont(new java.awt.Font("Trebuchet MS", 0, 18)); // NOI18N
+        jLabel5.setText("For: Mr. Dutton");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField1)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextField1)
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4)
+                        .addComponent(jButton6)
+                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton6)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(15, 15, 15))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel5))
+                        .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(127, Short.MAX_VALUE)
                 .addComponent(jLabel1)
@@ -174,15 +200,26 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(14, 14, 14)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton3)
-                .addGap(18, 18, 18)
-                .addComponent(jButton8)
-                .addGap(18, 18, 18)
-                .addComponent(jButton4)
-                .addGap(18, 18, 18)
-                .addComponent(jButton9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jButton3, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addGap(12, 12, 12)
+                        .addComponent(jButton8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton9))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel3)))
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton6)
@@ -191,7 +228,7 @@ public class MainJFrame extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(45, Short.MAX_VALUE))
+                .addContainerGap(63, Short.MAX_VALUE))
         );
 
         pack();
@@ -312,20 +349,20 @@ public class MainJFrame extends javax.swing.JFrame {
                 
                 for (int i = 0; i < theHT.buckets.length; i++) {
                     for (int j = 0; j < theHT.buckets[i].size(); j++) { // These lines go through the entire Hash table to get the information of each employee.
-                        EmployeeInfo emp = theHT.buckets[i].get(j);
+                        EmployeeInfo employeeBeingSaved = theHT.buckets[i].get(j);
                         
-                        if (emp instanceof FTE) { // This if statement checks if the employee is Full Time, and saves them accordingly
-                            emp.firstName = emp.firstName.replaceAll("\\|", "!@!");
-                            emp.lastName = emp.lastName.replaceAll("\\|", "!@!");
-                            writeToFile.write("FTE|" + emp.empNum + "|" + emp.firstName + "|" + emp.lastName + "|" +
-                                emp.gender + "|" + emp.workLoc + "|" + emp.deductRate + "|" + ((FTE) emp).getYearlySalary() + "\n"); // THis is the line that actually prints out the employee in a textfile
+                        if (employeeBeingSaved instanceof FTE) { // This if statement checks if the employee is Full Time, and saves them accordingly
+                            employeeBeingSaved.firstName = employeeBeingSaved.firstName.replaceAll("\\|", "!@!");
+                            employeeBeingSaved.lastName = employeeBeingSaved.lastName.replaceAll("\\|", "!@!");
+                            writeToFile.write("FTE|" + employeeBeingSaved.empNum + "|" + employeeBeingSaved.firstName + "|" + employeeBeingSaved.lastName + "|" +
+                                employeeBeingSaved.gender + "|" + employeeBeingSaved.workLoc + "|" + employeeBeingSaved.deductRate + "|" + ((FTE) employeeBeingSaved).getYearlySalary() + "\n"); // THis is the line that actually prints out the employee in a textfile
                         }
-                        else if(emp instanceof PTE){ // This else if will only run if the employee is not an FTE, which means that it is a PTE.
-                        emp.firstName = emp.firstName.replaceAll("\\|", "!@!");
-                        emp.lastName = emp.lastName.replaceAll("\\|", "!@!");
-                        writeToFile.write("PTE|" + emp.empNum + "|" + emp.firstName + "|" + emp.lastName + "|" +
-                                emp.gender + "|" + emp.workLoc + "|" + emp.deductRate + "|" + ((PTE) emp).getHourlyWage() +
-                                "|" + ((PTE) emp).getHoursPerWeek() + "|" + ((PTE) emp).getWeeksPerYear() + "\n");
+                        else if(employeeBeingSaved instanceof PTE){ // This else if will only run if the employee is not an FTE, which means that it is a PTE.
+                        employeeBeingSaved.firstName = employeeBeingSaved.firstName.replaceAll("\\|", "!@!");
+                        employeeBeingSaved.lastName = employeeBeingSaved.lastName.replaceAll("\\|", "!@!");
+                        writeToFile.write("PTE|" + employeeBeingSaved.empNum + "|" + employeeBeingSaved.firstName + "|" + employeeBeingSaved.lastName + "|" +
+                                employeeBeingSaved.gender + "|" + employeeBeingSaved.workLoc + "|" + employeeBeingSaved.deductRate + "|" + ((PTE) employeeBeingSaved).getHourlyWage() +
+                                "|" + ((PTE) employeeBeingSaved).getHoursPerWeek() + "|" + ((PTE) employeeBeingSaved).getWeeksPerYear() + "\n");
                     }
                         
                     }
@@ -406,6 +443,10 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
